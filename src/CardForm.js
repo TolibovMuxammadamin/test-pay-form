@@ -1,10 +1,12 @@
 import { Form, Input, Button, Card } from "antd";
 import "./CardForm.css";
 import MaskInput from "./MaskInput";
+import http from "./httpClient";
 
 export const CardForm = () => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
+  const onFinish = async (values) => {
+    const res = await http.post("payments", values);
+    console.log(res);
   };
 
   const onFinishFailed = (errorInfo) => {
